@@ -114,6 +114,28 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey){
 	console.log(firstTrainTime);// Error 02: Typo in variable name missing "t"
 	console.log(frequency);
 
+	// trial and error testing math
+	var frequency = moment('00:30', "HH:mm").format("X");
+	$('#test').append('<div>' + 'frequency: ' + frequency + '</div>');
+
+	var firstTrainTime = moment('06:00', "HH:mm").format("X");
+	$('#test').append('<div>' + 'first train time: ' + firstTrainTime + '</div>');
+
+	var timeNow = Date.now();
+	$('#test').append('<div>' + 'time now: ' + timeNow + '</div>');
+
+	var timeElapsed = parseInt(timeNow) - parseInt(firstTrainTime);
+	$('#test').append('<div>' + 'time elapsed: ' + timeElapsed + '</div>');
+
+	var occurance = parseInt(timeElapsed) / parseInt(frequency);
+	$('#test').append('<div>' + 'occurance: ' + occurance + '</div>');
+
+	var timePreviousArrival = parseInt(frequency) * 999 ;
+	$('#test').append('<div>' + 'timePreviousArrival: ' + timePreviousArrival + '</div>');
+
+	var timeArrival = moment.unix(timePreviousArrival).format("HH:mm");
+	$('#test').append('<div>' + 'timeArrival: ' + timeArrival + '</div>');
+
 	var timeNow = Date.now()
 		console.log(timeNow)
 	// Prettify the Next Arrival
